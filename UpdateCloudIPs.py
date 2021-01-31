@@ -21,7 +21,10 @@ resolver.lifetime = 1
 # The addresses listed in the providers' documentation for the latest addresses
 aws_uri =  "https://ip-ranges.amazonaws.com/ip-ranges.json"
 azure_uri = "https://www.microsoft.com/en-us/download/confirmation.aspx?id=41653"
+#with service tags: https://www.microsoft.com/en-us/download/confirmation.aspx?id=56519
 compute_uri = "_cloud-netblocks.googleusercontent.com"
+
+
 
 # Lists for holding the IP address ranges as they are collected
 aws_addresses = []
@@ -30,7 +33,7 @@ compute_addresses = []
 
 def get_dns_record(domain, record_type):
     """Simple function to get the specified DNS record for the target domain."""
-    answer = resolver.query(domain, record_type)
+    answer = resolver.resolve(domain, record_type)
     return answer
 
 
